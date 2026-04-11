@@ -1,0 +1,36 @@
+# espanso 매치 파일
+
+# 완전한 소개는 공식 문서에서 확인하세요: https://espanso.org/docs/
+
+# 이 파일은 espanso에서 사용할 기본 매치(스니펫)를 정의할 수 있습니다.
+# 이 매치들은 espanso를 사용할 때 모든 애플리케이션에서 활성화됩니다.
+
+# 매치란 대체 규칙으로, 사용자가 특정 "trigger" 문자열을 입력하면
+# 지정한 "replace" 문자열로 자동으로 바뀝니다.
+
+# yaml-language-server: $schema=https://raw.githubusercontent.com/espanso/espanso/dev/schemas/match.schema.json
+# 더 많은 기능은 공식 문서를 참고하세요: https://espanso.org/docs/
+
+matches:
+
+  # 주의: espanso는 YAML 형식으로 매치를 정의하므로 들여쓰기에 주의하세요!
+
+  # 그러나 매치는 동적일 수도 있습니다:
+
+  # uid 키워드 추가 (8자리 랜덤 16진수 생성)
+  - trigger: "::uid"
+    replace: "{{random}}"
+    vars:
+      - name: random
+        type: shell
+        params:
+          cmd: "openssl rand -hex 4"
+
+  # ㅕㅑㅇ 키워드 추가 (8자리 랜덤 16진수 생성)
+  - trigger: "::ㅕㅑㅇ"
+    replace: "{{random_hangul}}"
+    vars:
+      - name: random_hangul
+        type: shell
+        params:
+          cmd: "openssl rand -hex 4"
