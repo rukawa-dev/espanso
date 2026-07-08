@@ -34,3 +34,19 @@ matches:
         type: shell
         params:
           cmd: "openssl rand -hex 4"
+
+  # ::az 키워드 추가
+  - trigger: "::az"
+    replace: "A1:Z10000"
+
+  # ::ㅁㅋ 키워드 추가 (한글 입력 대비)
+  - trigger: "::ㅁㅋ"
+    replace: "A1:Z10000"
+
+  # ::a1 키워드 추가
+  - trigger: "::a1"
+    replace: '=$A1="ㅇ"'
+
+  # ::ㅁ1 키워드 추가 (한글 입력 대비)
+  - trigger: "::ㅁ1"
+    replace: '=$A1="ㅇ"'
