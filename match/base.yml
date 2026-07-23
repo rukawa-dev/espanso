@@ -50,3 +50,13 @@ matches:
   # ::ㅁ1 키워드 추가 (한글 입력 대비)
   - trigger: "::ㅁ1"
     replace: '=$A1="ㅇ"'
+
+  # ::time 키워드 추가 (오늘 날짜 및 시간)
+  - trigger: "::time"
+    replace: "{{mytime}}"
+    vars:
+      - name: mytime
+        type: date
+        params:
+          format: "%Y-%m-%d %P %I:%M"
+
