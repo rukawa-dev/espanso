@@ -8,6 +8,9 @@
 # 매치란 대체 규칙으로, 사용자가 특정 "trigger" 문자열을 입력하면
 # 지정한 "replace" 문자열로 자동으로 바뀝니다.
 
+# [지침] 매치를 생성/수정할 때는 영문 트리거와 두벌식 한글 입력 대비 트리거를
+# 반드시 함께 정의합니다. 예: triggers: ["::time", "::샤ㅡㄷ"]
+
 # yaml-language-server: $schema=https://raw.githubusercontent.com/espanso/espanso/dev/schemas/match.schema.json
 # 더 많은 기능은 공식 문서를 참고하세요: https://espanso.org/docs/
 
@@ -15,10 +18,9 @@ matches:
 
   # 주의: espanso는 YAML 형식으로 매치를 정의하므로 들여쓰기에 주의하세요!
 
-  # 그러나 매치는 동적일 수도 있습니다:
 
-  # uid 키워드 추가 (8자리 랜덤 16진수 생성)
-  - trigger: "::uid"
+  # ::uid, ::ㅕㅑㅇ 키워드 추가 (8자리 랜덤 16진수 생성 / 한글 입력 대비)
+  - triggers: ["::uid", "::ㅕㅑㅇ"]
     replace: "{{random}}"
     vars:
       - name: random
@@ -26,37 +28,19 @@ matches:
         params:
           cmd: "openssl rand -hex 4"
 
-  # ㅕㅑㅇ 키워드 추가 (8자리 랜덤 16진수 생성)
-  - trigger: "::ㅕㅑㅇ"
-    replace: "{{random_hangul}}"
-    vars:
-      - name: random_hangul
-        type: shell
-        params:
-          cmd: "openssl rand -hex 4"
-
-  # ::az 키워드 추가
-  - trigger: "::az"
+  # ::az, ::ㅁㅋ 키워드 추가 (한글 입력 대비)
+  - triggers: ["::az", "::ㅁㅋ"]
     replace: "A1:Z10000"
 
-  # ::ㅁㅋ 키워드 추가 (한글 입력 대비)
-  - trigger: "::ㅁㅋ"
-    replace: "A1:Z10000"
-
-  # ::a1 키워드 추가
-  - trigger: "::a1"
+  # ::a1, ::ㅁ1 키워드 추가 (한글 입력 대비)
+  - triggers: ["::a1", "::ㅁ1"]
     replace: '=$A1="ㅇ"'
 
-  # ::ㅁ1 키워드 추가 (한글 입력 대비)
-  - trigger: "::ㅁ1"
-    replace: '=$A1="ㅇ"'
-
-  # ::time 키워드 추가 (오늘 날짜 및 시간)
-  - trigger: "::time"
+  # ::time, ::샤ㅡㄷ 키워드 추가 (오늘 날짜 및 시간 / 한글 입력 대비)
+  - triggers: ["::time", "::샤ㅡㄷ"]
     replace: "{{mytime}}"
     vars:
       - name: mytime
         type: date
         params:
           format: "%Y-%m-%d %P %I:%M"
-
