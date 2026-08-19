@@ -44,3 +44,7 @@ matches:
         type: date
         params:
           format: "%Y-%m-%d %P %I:%M"
+
+  # ::dimg, ::ㅇㅑㅡㅎ 키워드 추가 (더미 이미지 URL / 한글 입력 대비)
+  - triggers: ["::dimg", "::ㅇㅑㅡㅎ"]
+    replace: "https://gifpng.com/560x315"
