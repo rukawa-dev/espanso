@@ -48,3 +48,11 @@ matches:
   # ::dimg, ::ㅇㅑㅡㅎ 키워드 추가 (더미 이미지 URL / 한글 입력 대비)
   - triggers: ["::dimg", "::ㅇㅑㅡㅎ"]
     replace: "https://gifpng.com/560x315"
+
+  # ::mail, ::ㅡㅁㅑㅣ 키워드 추가 (이메일 주소 / 한글 입력 대비)
+  - triggers: ["::mail", "::ㅡㅁㅑㅣ"]
+    replace: "dol2156@gmail.com"
+
+  # ::mailvw, ::ㅡㅁㅑㅣㅍㅈ 키워드 추가 (회사 이메일 주소 / 한글 입력 대비)
+  - triggers: ["::mailvw", "::ㅡㅁㅑㅣㅍㅈ"]
+    replace: "dol2156@v-wonderland.com"
